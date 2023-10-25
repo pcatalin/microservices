@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Website", "Website", "{96C49C42-8C39-4D2E-A14F-6775922C2F89}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{CC3E357D-5D9E-4AF0-AF99-539115731DD0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{DBF008F3-9634-477F-9273-2DE995AEDF65}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{8E32EEA0-6DA4-4191-8BD7-F5EC7F792474}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CouponAPI", "CouponAPI\CouponAPI.csproj", "{4162BC57-6479-4DAE-BE3A-B9A2E44CD22F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4162BC57-6479-4DAE-BE3A-B9A2E44CD22F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4162BC57-6479-4DAE-BE3A-B9A2E44CD22F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4162BC57-6479-4DAE-BE3A-B9A2E44CD22F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4162BC57-6479-4DAE-BE3A-B9A2E44CD22F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4162BC57-6479-4DAE-BE3A-B9A2E44CD22F} = {96C49C42-8C39-4D2E-A14F-6775922C2F89}
+	EndGlobalSection
+EndGlobal
