@@ -8,39 +8,64 @@ namespace Web.Service;
 public class CouponService : ICouponService
 {
     private readonly IRequestService _requestService;
+    private readonly IApiUtils _apiUtils;
 
-    public CouponService(IRequestService requestService)
+    public CouponService(IRequestService requestService, IApiUtils apiUtils)
     {
         _requestService = requestService;
+        _apiUtils = apiUtils;
     }
 
-    public async Task<ApiResponse> GetAsync(int id)
+    public async Task<ApiResponse?> GetAsync(int id)
     {
-        throw new NotImplementedException();
+        return await _requestService.SendAsync(new RequestDto
+        {
+            Url = $"{_apiUtils.CouponApiInfo.BaseUrl}/api/coupon/{id}"
+        });
     }
     
-    public async Task<ApiResponse> GetAsync(string code)
+    public async Task<ApiResponse?> GetAsync(string code)
     {
-        throw new NotImplementedException();
+        return await _requestService.SendAsync(new RequestDto
+        {
+            Url = $"{_apiUtils.CouponApiInfo.BaseUrl}/api/coupon/GetByCode/{code}"
+        });
     }
 
-    public async Task<ApiResponse> GetAllAsync()
+    public async Task<ApiResponse?> GetAllAsync()
     {
-        throw new NotImplementedException();
+        return await _requestService.SendAsync(new RequestDto
+        {
+            Url = $"{_apiUtils.CouponApiInfo.BaseUrl}/api/coupon/getAll"
+        });
     }
 
-    public async Task<ApiResponse> CreateAsync(CouponDto dto)
+    public async Task<ApiResponse?> CreateAsync(CouponDto dto)
     {
-        throw new NotImplementedException();
+        return await _requestService.SendAsync(new RequestDto
+        {
+            ApiType = ApiType.POST,
+            Url = $"{_apiUtils.CouponApiInfo.BaseUrl}/api/coupon/",
+            Data = dto
+        });
     }
 
-    public async Task<ApiResponse> UpdateASync(CouponDto dto)
+    public async Task<ApiResponse?> UpdateASync(CouponDto dto)
     {
-        throw new NotImplementedException();
+        return await _requestService.SendAsync(new RequestDto
+        {
+            ApiType = ApiType.PUT,
+            Url = $"{_apiUtils.CouponApiInfo.BaseUrl}/api/coupon/",
+            Data = dto
+        });
     }
 
-    public async Task<ApiResponse> DeleteAsync(int id)
+    public async Task<ApiResponse?> DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        return await _requestService.SendAsync(new RequestDto
+        {
+            ApiType = ApiType.DELETE,
+            Url = $"{_apiUtils.CouponApiInfo.BaseUrl}/api/coupon/{id}"
+        });
     }
 }

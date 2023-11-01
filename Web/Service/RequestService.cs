@@ -16,18 +16,18 @@ public class RequestService : IRequestService
         _httpClientFactory = httpClientFactory;
     }
     
-    public async Task<ApiResponse?> SendAsync(ApiRequest request)
+    public async Task<ApiResponse?> SendAsync(RequestDto requestDto)
     {
         try
         {
-            var client = _httpClientFactory.CreateClient("TestApi");
+            var client = _httpClientFactory.CreateClient();
             HttpRequestMessage message = new();
             message.Headers.Add("Accept", "application/json");
             // token
 
-            message.RequestUri = new Uri(request.Url);
+            message.RequestUri = new Uri(requestDto.Url);
 
-            switch (request.ApiType)
+            switch (requestDto.ApiType)
             {
                 case ApiType.POST:
                     message.Method = HttpMethod.Post;
@@ -46,9 +46,9 @@ public class RequestService : IRequestService
                     break;
             }
 
-            if (request.ApiType is ApiType.POST or ApiType.PUT)
+            if (requestDto.ApiType is ApiType.POST or ApiType.PUT)
             {
-                message.Content = new StringContent(JsonConvert.SerializeObject(request.Data), Encoding.UTF8, "application/json");
+                message.Content = new StringContent(JsonConvert.SerializeObject(requestDto.Data), Encoding.UTF8, "application/json");
             }
 
             var response = await client.SendAsync(message);

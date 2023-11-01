@@ -15,6 +15,7 @@ builder.Services.AddScoped<IRequestService, RequestService>();
 builder.Services.AddScoped<ICouponService, CouponService>();
 
 RegisterApiUtils();
+RegisterAutomapper();
 
 await builder.Build().RunAsync();
 
@@ -35,7 +36,7 @@ void RegisterApiUtils()
           var couponApiInfo = new CouponApiInfo
           {
                HttpClientName = nameof(ServiceUrlSettings.CouponAPI),
-               CouponBaseUrl = urlSettings.CouponAPI
+               BaseUrl = urlSettings.CouponAPI
           };
           apiUtils.CouponApiInfo = couponApiInfo;
      }
@@ -48,4 +49,12 @@ void RegisterApiUtils()
      }
      
      builder.Services.AddSingleton<IApiUtils>(apiUtils);
+}
+
+void RegisterAutomapper()
+{
+     var mapper = MapperConfig.RegisterMaps().CreateMapper();
+
+     builder!.Services.AddSingleton(mapper);
+     builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 }

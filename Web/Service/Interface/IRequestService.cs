@@ -5,5 +5,5 @@ namespace Web.Service.Interface;
 
 public interface IRequestService
 {
-    Task<ApiResponse?> SendAsync(ApiRequest request);
+    Task<ApiResponse?> SendAsync(RequestDto requestDto);
 }

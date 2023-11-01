@@ -52,5 +52,4 @@ void RegisterAutomapper()
 
     builder!.Services.AddSingleton(mapper);
     builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
 }

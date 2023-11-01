@@ -2,11 +2,11 @@ namespace Web.Utils;
 
 public class ApiUtils : IApiUtils
 {
-    public ICouponApiInfo CouponApiInfo { get; set; }
+    public IApiInfo CouponApiInfo { get; set; }
 }
 
-public class CouponApiInfo : ICouponApiInfo
+public class CouponApiInfo : IApiInfo
 {
     public required string HttpClientName { get; init; }
-    public required string CouponBaseUrl { get; init; }
+    public required string BaseUrl { get; init; }
 }

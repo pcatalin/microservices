@@ -1,6 +1,44 @@
 @page "/Coupons"
+@using Web.Models.Dto
+@using AutoMapper
+@inject ICouponService CouponService
+@inject IMapper Mapper;
+
 <h3>Coupons</h3>
 
+@if (couponDtos is { Count: > 0})
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Code</th>
+            <th>Discount</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var coupon in couponDtos)
+        {
+            <tr>
+                <td>@coupon.Id</td>
+                <td>@coupon.Code</td>
+                <td>@coupon.DiscountAmount</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
 @code {
-    
+    private ICollection<CouponDto> couponDtos;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var result = await CouponService.GetAllAsync();
+
+        if (result is { Result: not null})
+        {
+            couponDtos = Mapper.Map<ICollection<CouponDto>>(result.Result);
+        }
+    }
 }
